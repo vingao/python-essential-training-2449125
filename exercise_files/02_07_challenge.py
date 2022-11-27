@@ -10,19 +10,20 @@ class Canvas:
         self._y = height
         # This is a grid that contains data about where the 
         # TerminalScribes have visited
-        self._canvas = [[' ' for y in range(self._y)] for x in range(self._x)]
+        # self._canvas = [[' ' for y in range(self._y)] for x in range(self._x)]
+        self._canvas = [['_' for y in range(self._y)] for x in range(self._x)]
 
     # Returns True if the given point is outside the boundaries of the Canvas
     def hitsWall(self, point):
         return point[0] < 0 or point[0] >= self._x or point[1] < 0 or point[1] >= self._y
 
-    # Set the given position to the provided character on the canvas
-    def setPos(self, pos, mark):
+    # Set the given position to the provided character on the canvas    def setPos(self, pos, mark):
         self._canvas[pos[0]][pos[1]] = mark
 
     # Clear the terminal (used to create animation)
     def clear(self):
-        os.system('cls' if os.name == 'nt' else 'clear')
+        # os.system('cls' if os.name == 'nt' else 'clear')
+        pass
 
     # Clear the terminal and then print each line in the canvas
     def print(self):
@@ -35,7 +36,8 @@ class TerminalScribe:
         self.canvas = canvas
         self.trail = '.'
         self.mark = '*'
-        self.framerate = 0.2
+        # self.framerate = 0.2
+        self.framerate = 1
         self.pos = [0, 0]
 
     def up(self):
@@ -71,7 +73,8 @@ class TerminalScribe:
         time.sleep(self.framerate)
 
 # Create a new Canvas instance that is 30 units wide by 30 units tall 
-canvas = Canvas(30, 30)
+# canvas = Canvas(30, 30)
+canvas = Canvas(5, 5)
 
 # Create a new scribe and give it the Canvas object
 scribe = TerminalScribe(canvas)
@@ -80,6 +83,7 @@ scribe = TerminalScribe(canvas)
 scribe.right()
 scribe.right()
 scribe.right()
+scribe.left()
 scribe.down()
 scribe.down()
 scribe.down()
@@ -89,5 +93,3 @@ scribe.left()
 scribe.up()
 scribe.up()
 scribe.up()
-
-
