@@ -78,7 +78,9 @@ class TerminalScribe:
 
 canvas = Canvas(30, 30)
 scribe = TerminalScribe(canvas)
-scribe.setDegrees(135)
+# scribe.setDegrees(135)
+scribe.pos = [0, 29]
+scribe.setDegrees(0)
 for i in range(30):
     scribe.forward()
 
